@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Data", "EntityFrameworkDemo.Data\EntityFrameworkDemo.Data.csproj", "{D23B84DC-BE97-4F58-83C7-29705BAC8A23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Web", "EntityFrameworkDemo.Web\EntityFrameworkDemo.Web.csproj", "{1136BDED-4AE0-46E2-ADF5-4B3F07127ED0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D23B84DC-BE97-4F58-83C7-29705BAC8A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D23B84DC-BE97-4F58-83C7-29705BAC8A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D23B84DC-BE97-4F58-83C7-29705BAC8A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D23B84DC-BE97-4F58-83C7-29705BAC8A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1136BDED-4AE0-46E2-ADF5-4B3F07127ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1136BDED-4AE0-46E2-ADF5-4B3F07127ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1136BDED-4AE0-46E2-ADF5-4B3F07127ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1136BDED-4AE0-46E2-ADF5-4B3F07127ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
