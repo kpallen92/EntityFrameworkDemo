@@ -17,10 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EntityFrameworkDemo.Data\EntityFrameworkDemo.Data.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="appsettings.json" />
       <Content Include="appsettings.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -32,7 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
+      <ProjectReference Include="..\EntityFrameworkDemo.Domain\EntityFrameworkDemo.Domain.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkDemo.Data;
+using EntityFrameworkDemo.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,10 @@ builder.Services.AddHealthChecks();
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Domain layer dependencies
+builder.Services.AddTransient<CompanyService>();
+builder.Services.AddTransient<EmployeeService>();
 
 // Entity framework
 const string sqlTemplate =
