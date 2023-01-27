@@ -20,7 +20,7 @@ public class Company
     public bool Inactive { get; set; }
     
     [Required]
-    public DateTimeOffset CreatedOnUtcDateTime { get; set; }
+    public DateTimeOffset CreatedOn { get; set; }
 
     // public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
