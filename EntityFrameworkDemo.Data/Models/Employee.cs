@@ -14,5 +14,5 @@ public class Employee
     public int CompanyId { get; set; }
     public Company? Company { get; set; }
     
-    public DateTimeOffset CreatedOnUtcDateTime { get; set; }
+    public DateTimeOffset CreatedOn { get; set; }
 }
