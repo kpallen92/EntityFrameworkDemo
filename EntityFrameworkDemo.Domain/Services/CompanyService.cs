@@ -1,6 +1,7 @@
 using EntityFrameworkDemo.Data;
 using EntityFrameworkDemo.Data.Models;
 using EntityFrameworkDemo.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkDemo.Domain.Services;
 
@@ -34,7 +35,10 @@ public class CompanyService : BaseService
 
     public async Task<CompanyDto?> GetAsync(int companyId)
     {
-        Company? company = await GetAsync<Company>(companyId);
+        Company? company = await Context
+            .Company
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.CompanyId == companyId);
 
         return company == null ? null : ParseToDto(company);
     }

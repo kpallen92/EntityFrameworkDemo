@@ -14,5 +14,5 @@ public class Employee
     public int CompanyId { get; set; }
     public Company? Company { get; set; }
     
-    public DateTimeOffset CreatedOn { get; set; }
+    public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
 }

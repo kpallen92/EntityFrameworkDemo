@@ -3,21 +3,12 @@ using EntityFrameworkDemo.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // CONFIGURE SERVICES
 // Base services
-builder.Services.AddControllers()
-    .AddNewtonsoftJson(options =>
-    {
-        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-        options.SerializerSettings.DateParseHandling = DateParseHandling.DateTimeOffset;
-    });
+builder.Services.AddControllers();
 builder.Services.AddRouting(options => { options.LowercaseUrls = true; });
 builder.Services.AddHealthChecks();
 
@@ -29,7 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<CompanyService>();
 builder.Services.AddTransient<EmployeeService>();
 
-// Entity framework
+// Entity Framework
 const string sqlTemplate =
     "Server=tcp:{0},{1};Database={2};User ID={3};Password={4};Encrypt={5};Persist Security Info=False;MultipleActiveResultSets=False;TrustServerCertificate=False;Connection Timeout=30;";
 
@@ -44,7 +35,7 @@ builder.Services.AddDbContext<DemoContext>(options => options.UseSqlServer(conne
 var app = builder.Build();
 
 // CONFIGURE
-// EF auto-migrations
+// Entity Framework auto-migrations
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 var context = services.GetRequiredService<DemoContext>();

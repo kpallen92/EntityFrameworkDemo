@@ -22,7 +22,7 @@ public class Company
     public bool Inactive { get; set; }
     
     [Required]
-    public DateTimeOffset CreatedOn { get; set; }
+    public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
 
-    // public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
