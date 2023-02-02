@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using EntityFrameworkDemo.Data.Models;
 
@@ -19,5 +20,5 @@ public class CompanyDto
     [Required]
     public bool Inactive { get; set; }
     
-    public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    // public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

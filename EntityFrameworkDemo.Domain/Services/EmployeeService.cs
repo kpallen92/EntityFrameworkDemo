@@ -55,7 +55,7 @@ public class EmployeeService : BaseService
         employee.CompanyId = employeeDto.CompanyId;
     }
 
-    private static EmployeeDto ParseToDto(Employee employee)
+    public static EmployeeDto ParseToDto(Employee employee)
     {
         return new EmployeeDto
         {

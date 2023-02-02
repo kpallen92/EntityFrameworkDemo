@@ -38,8 +38,11 @@ public class CompanyService : BaseService
         Company? company = await Context
             .Company
             .AsNoTracking()
+            // .Include(x => x.Employees)
             .FirstOrDefaultAsync(x => x.CompanyId == companyId);
 
+        
+        
         return company == null ? null : ParseToDto(company);
     }
 
@@ -70,11 +73,12 @@ public class CompanyService : BaseService
     {
         return new CompanyDto
         {
+            // Employees = company.Employees.Select(EmployeeService.ParseToDto).ToList(),
             CompanyId = company.CompanyId,
             CompanyName = company.CompanyName,
             YearFounded = company.YearFounded,
             Description = company.Description,
-            Inactive = company.Inactive
+            Inactive = company.Inactive,
         };
     }
 }
