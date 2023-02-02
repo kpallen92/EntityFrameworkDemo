@@ -17,7 +17,7 @@ public class EmployeeService : BaseService
 
         await CreateAsync(employee);
 
-        return await GetAsync(employee.EmployeeId);
+        return ParseToDto(employee);
     }
 
     public async Task<bool> DeleteAsync(int employeeId)
@@ -31,14 +31,7 @@ public class EmployeeService : BaseService
 
         return true;
     }
-
-    public async Task<EmployeeDto?> GetAsync(int employeeId)
-    {
-        Employee? employee = await GetAsync<Employee>(employeeId);
-
-        return employee == null ? null : ParseToDto(employee);
-    }
-
+    
     public async Task<EmployeeDto?> UpdateAsync(EmployeeDto employeeDto)
     {
         Employee? employee = await GetAsync<Employee>(employeeDto.EmployeeId.GetValueOrDefault());
@@ -50,7 +43,7 @@ public class EmployeeService : BaseService
 
         await Context.SaveChangesAsync();
 
-        return await GetAsync(employee.EmployeeId);
+        return ParseToDto(employee);
     }
 
     private static void ParseToDataModel(EmployeeDto employeeDto, ref Employee employee)

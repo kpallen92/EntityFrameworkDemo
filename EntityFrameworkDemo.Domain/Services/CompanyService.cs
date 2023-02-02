@@ -18,7 +18,7 @@ public class CompanyService : BaseService
 
         await CreateAsync(company);
 
-        return await GetAsync(company.CompanyId);
+        return ParseToDto(company);
     }
 
     public async Task<bool> DeleteAsync(int companyId)
@@ -54,7 +54,7 @@ public class CompanyService : BaseService
 
         await Context.SaveChangesAsync();
 
-        return await GetAsync(company.CompanyId);
+        return ParseToDto(company);
     }
 
     private static void ParseToDataModel(CompanyDto companyDto, ref Company company)

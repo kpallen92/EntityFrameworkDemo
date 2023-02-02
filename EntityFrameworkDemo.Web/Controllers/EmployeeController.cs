@@ -26,12 +26,6 @@ public class EmployeeController : Controller
         return Ok(await _employeeService.DeleteAsync(employeeId));
     }
 
-    [HttpGet("Get/{employeeId:int}")]
-    public async Task<IActionResult> GetAsync(int employeeId)
-    {
-        return Ok(await _employeeService.GetAsync(employeeId));
-    }
-
     [HttpPut("Update")]
     public async Task<IActionResult> UpdateAsync(EmployeeDto employeeDto)
     {
