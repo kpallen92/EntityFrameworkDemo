@@ -1,7 +1,7 @@
 using EntityFrameworkDemo.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EntityFrameworkDemo.Data.Seeder;
+namespace EntityFrameworkDemo.Data.Seeders;
 
 public class CompanyRoleSeeder
 {

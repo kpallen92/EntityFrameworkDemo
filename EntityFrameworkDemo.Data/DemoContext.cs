@@ -1,5 +1,5 @@
 using EntityFrameworkDemo.Data.Models;
-using EntityFrameworkDemo.Data.Seeder;
+using EntityFrameworkDemo.Data.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkDemo.Data;
