@@ -4,10 +4,13 @@ using EntityFrameworkDemo.Domain.Models;
 
 namespace EntityFrameworkDemo.Domain.Services;
 
-public class EmployeeService : BaseService
+public class EmployeeService
 {
-    public EmployeeService(DemoContext context) : base(context)
+    private readonly DemoContext _context;
+    
+    public EmployeeService(DemoContext context)
     {
+        _context = context;
     }
 
     public async Task<EmployeeDto?> CreateAsync(EmployeeDto employeeDto)
@@ -15,33 +18,8 @@ public class EmployeeService : BaseService
         var employee = new Employee();
         ParseToDataModel(employeeDto, ref employee);
 
-        await CreateAsync(employee);
-
-        return ParseToDto(employee);
-    }
-
-    public async Task<bool> DeleteAsync(int employeeId)
-    {
-        Employee? employee = await GetAsync<Employee>(employeeId);
-
-        if (employee == null)
-            return false;
-
-        await DeleteAsync(employee);
-
-        return true;
-    }
-    
-    public async Task<EmployeeDto?> UpdateAsync(EmployeeDto employeeDto)
-    {
-        Employee? employee = await GetAsync<Employee>(employeeDto.EmployeeId.GetValueOrDefault());
-
-        if (employee == null)
-            return null;
-
-        ParseToDataModel(employeeDto, ref employee);
-
-        await Context.SaveChangesAsync();
+        _context.Add(employee);
+        await _context.SaveChangesAsync();
 
         return ParseToDto(employee);
     }

@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using EntityFrameworkDemo.Data.Models;
 
 namespace EntityFrameworkDemo.Domain.Models;
 

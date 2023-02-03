@@ -5,10 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkDemo.Domain.Services;
 
-public class CompanyService : BaseService
+public class CompanyService
 {
-    public CompanyService(DemoContext context) : base(context)
+    private readonly DemoContext _context;
+    
+    public CompanyService(DemoContext context)
     {
+        _context = context;
     }
 
     public async Task<CompanyDto?> CreateAsync(CompanyDto companyDto)
@@ -16,46 +19,33 @@ public class CompanyService : BaseService
         var company = new Company();
         ParseToDataModel(companyDto, ref company);
 
-        await CreateAsync(company);
+        _context.Add(company);
+        await _context.SaveChangesAsync();
 
         return ParseToDto(company);
     }
 
-    public async Task<bool> DeleteAsync(int companyId)
-    {
-        Company? company = await GetAsync<Company>(companyId);
-
-        if (company == null)
-            return false;
-
-        await DeleteAsync(company);
-
-        return true;
-    }
-
     public async Task<CompanyDto?> GetAsync(int companyId)
     {
-        Company? company = await Context
+        Company? company = await _context
             .Company
             .AsNoTracking()
             // .Include(x => x.Employees)
             .FirstOrDefaultAsync(x => x.CompanyId == companyId);
-
-        
         
         return company == null ? null : ParseToDto(company);
     }
 
     public async Task<CompanyDto?> UpdateAsync(CompanyDto companyDto)
     {
-        Company? company = await GetAsync<Company>(companyDto.CompanyId.GetValueOrDefault());
+        Company? company = await _context.FindAsync<Company>(companyDto.CompanyId.GetValueOrDefault());
 
         if (company == null)
             return null;
 
         ParseToDataModel(companyDto, ref company);
 
-        await Context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
 
         return ParseToDto(company);
     }

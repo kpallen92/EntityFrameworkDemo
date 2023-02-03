@@ -13,22 +13,10 @@ public class EmployeeController : Controller
     {
         _employeeService = employeeService;
     }
-    
+
     [HttpPost("Create")]
     public async Task<IActionResult> CreateAsync(EmployeeDto employeeDto)
     {
         return Ok(await _employeeService.CreateAsync(employeeDto));
-    }
-    
-    [HttpDelete("Delete/{employeeId:int}")]
-    public async Task<IActionResult> DeleteAsync(int employeeId)
-    {
-        return Ok(await _employeeService.DeleteAsync(employeeId));
-    }
-
-    [HttpPut("Update")]
-    public async Task<IActionResult> UpdateAsync(EmployeeDto employeeDto)
-    {
-        return Ok(await _employeeService.UpdateAsync(employeeDto));
     }
 }

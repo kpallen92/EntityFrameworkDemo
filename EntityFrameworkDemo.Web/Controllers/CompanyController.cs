@@ -13,17 +13,11 @@ public class CompanyController : Controller
     {
         _companyService = companyService;
     }
-    
+
     [HttpPost("Create")]
     public async Task<IActionResult> CreateAsync(CompanyDto companyDto)
     {
         return Ok(await _companyService.CreateAsync(companyDto));
-    }
-    
-    [HttpDelete("Delete/{companyId:int}")]
-    public async Task<IActionResult> DeleteAsync(int companyId)
-    {
-        return Ok(await _companyService.DeleteAsync(companyId));
     }
 
     [HttpGet("Get/{companyId:int}")]
@@ -37,5 +31,4 @@ public class CompanyController : Controller
     {
         return Ok(await _companyService.UpdateAsync(companyDto));
     }
-
 }
