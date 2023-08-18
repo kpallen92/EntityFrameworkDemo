@@ -10,12 +10,12 @@ public class Company
     public int CompanyId { get; set; }
     
     [Required]
-    // [Column(TypeName = "nvarchar(100)")]
+    [Column(TypeName = "nvarchar(100)")]
     public string CompanyName { get; set; } = string.Empty;
 
     public int? YearFounded { get; set; }
 
-    // [Column(TypeName = "nvarchar(4000)")]
+    [Column(TypeName = "nvarchar(4000)")]
     public string? Description { get; set; }
 
     [Required]
@@ -24,5 +24,5 @@ public class Company
     [Required]
     public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
 
-    // public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

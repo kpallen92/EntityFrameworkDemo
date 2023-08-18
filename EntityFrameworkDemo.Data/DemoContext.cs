@@ -7,7 +7,7 @@ namespace EntityFrameworkDemo.Data;
 public class DemoContext : DbContext
 {
     public DbSet<Company> Company => Set<Company>();
-    // public DbSet<Employee> Employee => Set<Employee>();
+    public DbSet<Employee> Employee => Set<Employee>();
 
     public DemoContext()
     {
@@ -18,23 +18,23 @@ public class DemoContext : DbContext
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    { 
         base.OnModelCreating(modelBuilder);
-
-        // modelBuilder.Entity<Employee>(entity =>
-        // {
-        //     entity.HasKey(prop => prop.EmployeeId);
-        //     entity.Property(prop => prop.EmployeeId).HasColumnType("bigint");
-        //     entity.Property(prop => prop.FirstName).HasMaxLength(100).IsRequired();
-        //     entity.Property(prop => prop.LastName).HasMaxLength(100).IsRequired();
-        //     entity.Property(prop => prop.CreatedOn).IsRequired();
-        // });
-        //
-        // modelBuilder.Entity<CompanyRole>(entity =>
-        // {
-        //     entity.Property(prop => prop.Description).HasMaxLength(100);
-        // });
-        //
-        // new CompanyRoleSeeder(modelBuilder).Seed();
+        
+        modelBuilder.Entity<Employee>(entity =>
+        { 
+            entity.HasKey(prop => prop.EmployeeId);
+            entity.Property(prop => prop.EmployeeId).HasColumnType("bigint");
+            entity.Property(prop => prop.FirstName).HasMaxLength(100).IsRequired();
+            entity.Property(prop => prop.LastName).HasMaxLength(100).IsRequired();
+            entity.Property(prop => prop.CreatedOn).IsRequired();
+        });
+        
+         modelBuilder.Entity<CompanyRole>(entity =>
+         {
+             entity.Property(prop => prop.Description).HasMaxLength(100);
+         });
+        
+         new CompanyRoleSeeder(modelBuilder).Seed();
     }
 }

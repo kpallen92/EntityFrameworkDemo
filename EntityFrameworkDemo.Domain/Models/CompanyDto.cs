@@ -19,5 +19,5 @@ public class CompanyDto
     [Required]
     public bool Inactive { get; set; }
     
-    // public ICollection<EmployeeDto> Employees { get; set; } = new List<EmployeeDto>();
+    public ICollection<EmployeeDto> Employees { get; set; } = new List<EmployeeDto>();
 }

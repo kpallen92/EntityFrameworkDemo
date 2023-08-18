@@ -30,7 +30,7 @@ public class CompanyService
         Company? company = await _context
             .Company
             .AsNoTracking()
-            // .Include(x => x.Employees)
+            .Include(x => x.Employees)
             .FirstOrDefaultAsync(x => x.CompanyId == companyId);
         
         return company == null ? null : ParseToDto(company);
@@ -63,7 +63,7 @@ public class CompanyService
     {
         return new CompanyDto
         {
-            // Employees = company.Employees.Select(EmployeeService.ParseToDto).ToList(),
+            Employees = company.Employees.Select(EmployeeService.ParseToDto).ToList(),
             CompanyId = company.CompanyId,
             CompanyName = company.CompanyName,
             YearFounded = company.YearFounded,
